@@ -26,7 +26,6 @@ function App() {
 
   return (
     <>
-      <h1>Hacker News</h1>
       {news.map((news) => (
         <div key={Math.random()}>
           <h2 key={news.title}>{news.title}</h2>
