@@ -3,7 +3,24 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#FEFBF6",
+    },
+    secondary: {
+      main: "#31363F",
+    },
+    warning: {
+      main: "#31363F",
+    },
+    error: {
+      main: "#31363F",
+    },
+  },
+});
 const FetchData = ({ url }) => {
   const [news, setNews] = useState([]);
   useEffect(() => {
@@ -31,58 +48,60 @@ const FetchData = ({ url }) => {
     console.log("hi");
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 10,
-        margin: 10,
-      }}
-    >
-      {news.map((news) => (
-        <Box key={Math.random()} sx={{ flexGrow: 1 }}>
-          <AppBar
-            style={{
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
-            }}
-            position="static"
-          >
-            <h3 key={news.tile} style={{ margin: 20 }}>
-              {news.title}
-            </h3>
-            {/* <Divider color="warning" variant="middle" /> */}
-            <div style={{ margin: 10 }}>
-              <Chip
-                label={`${news.points} points by ${news.author}`}
-                size="small"
-                variant="outlined"
-                color="warning"
-              />{" "}
-              <Chip
-                label={calculateTimeAgo(news.created_at_i)}
-                size="small"
-                variant="outlined"
-                color="warning"
-              />{" "}
-              <Chip
-                label={`${news.num_comments} comments`}
-                size="small"
-                variant="outlined"
-                color="warning"
-              />{" "}
-              <Chip
-                label="hide"
-                size="small"
-                variant="outlined"
-                color="error"
-                onClick={handleClick}
-              />
-            </div>
-          </AppBar>
-        </Box>
-      ))}
-    </div>
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          margin: 10,
+        }}
+      >
+        {news.map((news) => (
+          <Box key={Math.random()} sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+              <a
+                href={news.url}
+                key={news.tile}
+                style={{
+                  margin: 20,
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "25px",
+                }}
+              >
+                {news.title}
+              </a>
+              {/* <Divider color="warning" variant="middle" /> */}
+              <div style={{ margin: 10 }}>
+                <Chip
+                  label={`${news.points} points by ${news.author}`}
+                  size="small"
+                  color="warning"
+                />{" "}
+                <Chip
+                  label={calculateTimeAgo(news.created_at_i)}
+                  size="small"
+                  color="warning"
+                />{" "}
+                <Chip
+                  label={`${news.num_comments} comments`}
+                  size="small"
+                  color="warning"
+                />{" "}
+                <Chip
+                  variant="outlined"
+                  label="hide"
+                  size="small"
+                  color="error"
+                  onClick={handleClick}
+                />
+              </div>
+            </AppBar>
+          </Box>
+        ))}
+      </div>
+    </ThemeProvider>
     //   <div key={Math.random()}>
     //     <h2 style={{ backgroundColor: "red" }} key={news.title}>
     //       {news.title}

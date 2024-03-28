@@ -4,17 +4,101 @@ import Stack from "@mui/material/Stack";
 const handleClick = () => {
   console.log("hi");
 };
-const Navbar = () => {
+const Navbar = ({ theme }) => {
   return (
     <Stack sx={{ marginBottom: 1 }} direction="row" spacing={2}>
-      <Chip color="warning" label="New" onClick={handleClick} />
+      <Chip
+        theme={theme}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "flex",
+            md: "flex",
+            lg: "flex",
+            xl: "flex",
+          },
+        }}
+        color="secondary"
+        label="New"
+        onClick={handleClick}
+      />
 
-      <Chip color="warning" label="Past" onClick={handleClick} />
+      <Chip
+        theme={theme}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "flex",
+            md: "flex",
+            lg: "flex",
+            xl: "flex",
+          },
+        }}
+        color="secondary"
+        label="Past"
+        onClick={handleClick}
+      />
 
-      <Chip color="warning" label="Ask" onClick={handleClick} />
-      <Chip color="warning" label="Show" onClick={handleClick} />
-      <Chip color="warning" label="Jobs" onClick={handleClick} />
-      <Chip color="warning" label="Submit" onClick={handleClick} />
+      <Chip
+        theme={theme}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "flex",
+            md: "flex",
+            lg: "flex",
+            xl: "flex",
+          },
+        }}
+        color="secondary"
+        label="Ask"
+        onClick={handleClick}
+      />
+      <Chip
+        theme={theme}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "flex",
+            md: "flex",
+            lg: "flex",
+            xl: "flex",
+          },
+        }}
+        color="secondary"
+        label="Show"
+        onClick={handleClick}
+      />
+      <Chip
+        theme={theme}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "flex",
+            md: "flex",
+            lg: "flex",
+            xl: "flex",
+          },
+        }}
+        color="secondary"
+        label="Jobs"
+        onClick={handleClick}
+      />
+      <Chip
+        theme={theme}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "flex",
+            md: "flex",
+            lg: "flex",
+            xl: "flex",
+          },
+        }}
+        color="secondary"
+        label="Submit"
+        onClick={handleClick}
+      />
     </Stack>
   );
 };
